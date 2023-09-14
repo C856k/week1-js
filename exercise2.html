@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .my-div {width: 25px; height: 25px;background-color: red;margin: 1px;}
+        .my-div {
+            width: 25px; 
+            height: 25px;
+            background-color: red;
+            margin: 1px;}
     </style>
 </head>
 <body>
+    <div id="outer">
     <div id="div1" class="my-div" onclick="handleClick('div1')"></div>
     <div id="div2" class="my-div" onclick="handleClick('div2')"></div>
     <div id="div3" class="my-div" onclick="handleClick('div3')"></div>
@@ -21,20 +26,20 @@
     <div id="div10" class="my-div" onclick="handleClick('div10')"></div>
     <div id="div11" class="my-div" onclick="handleClick('div11')"></div>
     <div id="div12" class="my-div" onclick="handleClick('div12')"></div>
-    <div onclick="alert('The handler')">
-    <em>If you click on <code>EM</code>,the handler on<code>DIV</code>runs.</em></div>
+    </div>
+    <p id="paragraph"></p>
+    </body>
     <script>
-        function handleClick(divId) {
-            console.log(`Hi from ${divId}`);
-        }
-        function handleClick(event) {
-            // Check if the clicked element is one of the inner divs
-            if (event.target.id === "div1") {
-                console.log("Hi from div1");
-            } else if (event.target.id === "div2") {
-                console.log("Hi from div2");
+        function onClick(){
+            if(event.target.id != "outer"){
+                document.getElementById("paragraph").innerText = 
+                "Hi from " + event.target.id;
+                console.log("Hi from " + event.target.id);
             }
         }
-    </script>
-</body>
+        const outerDiv = document.getElementById("outer");
+        outerDiv.addEventListener("click",onClick);
+     </script>
+         
+
 </html>
