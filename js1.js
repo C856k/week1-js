@@ -1,4 +1,4 @@
-/*
+
 function add(n1, n2){
   return n1 +n2;
 }
@@ -97,7 +97,7 @@ console.log(person);
 for(prop in myObj){
   console.log(prop,myObj[prop])
 }
-*/
+
 var makeCounter = function() {
   var privateCounter = 0;
   function changeBy(val) {
