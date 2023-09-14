@@ -1,3 +1,4 @@
+console.log(formatString("basic math functions"))
 
 function add(n1, n2){
   return n1 +n2;
@@ -11,20 +12,17 @@ const cb = function(n1, n2, callback){
 };
 
 
-
+console.log(formatString("What will this print?"))
  console.log( add(1,2) )     // What will this print?
  console.log( add )          // What will it print and what does add represent?
  console.log( add(1,2,3) ) ; // What will it print
  console.log( add(1) );	  // What will it print 	
- 
  console.log(cb(3,3,add) ); // What will it print
-
  console.log(cb(4,3,sub) ); // What will it print
- 
  console.log(cb(3,3,add)); // What will it print (and what was the problem)
- 
  console.log(cb(3,"hh",add)); // What will it print
- 
+
+console.log
 function mul(n1,n2){
   return n1 * n2;
 }
@@ -94,10 +92,6 @@ const person = {
 };
 console.log(person);
 
-for(prop in myObj){
-  console.log(prop,myObj[prop])
-}
-
 var makeCounter = function() {
   var privateCounter = 0;
   function changeBy(val) {
@@ -112,7 +106,16 @@ var makeCounter = function() {
 var counter1 = makeCounter();
 var counter2 = makeCounter();
 
-  
+
+
+function formatString(str) {
+  const desiredLength = 66
+  const paddingLength = Math.max(0, desiredLength - str.length);
+  const leftPadding = '-'.repeat(Math.floor(paddingLength / 2));
+  const rightPadding = '-'.repeat(Math.ceil(paddingLength / 2));
+
+  return '\n' + leftPadding + ' ' + str + ' ' + rightPadding ;
+}
   
  
  
