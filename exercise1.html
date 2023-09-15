@@ -16,27 +16,9 @@
     <div id="d2" style="width: 100px;margin: 1px;">&nbsp;</div>
     <div id="d3" style="width: 100px;margin: 1px;">&nbsp;</div>
 </div>
+
     <button id="btn">Change the Colors</button>
     <script>
-/*
-function getRandomColor(){
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for(let i = 0; i < 6; i++){
-                color += letters[Math.floor(Math.random()*16)];
-            }
-            return color;
-        };
-
-        function changeColorButton(){
-            divs.forEach((div) => (div.style.backgroundColor = getRandomColor));
-        } 
-        const divs = document.querySelectorAll("#div-container div");
-        const btn = document.getElementById("btn");
-
-        divs.forEach((div) => (div.style.backgroundColor = "purple"));
-        btn.addEventListener("click",changeColorButton);
-        */
         const getRandomColor = function () {
         const letters = "0123456789ABCDEF";
         let color = "#";
@@ -56,5 +38,11 @@ function getRandomColor(){
       divs.forEach((div) => (div.style.backgroundColor = "pink"));
       btn.addEventListener("click", changeColors);
     </script>
+    <h3>Reflections</h3>
+    <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+        In this exercise, i got to use to different forEach commands, to manipulate the things
+        that happened in the three boxes that we had to made and manipulate. In things example, how we changed the colors 
+        of the three boxes.
+    </div>
 </body>
 </html>
