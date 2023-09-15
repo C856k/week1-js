@@ -18,7 +18,7 @@
 </div>
     <button id="btn">Change the Colors</button>
     <script>
-
+/*
 function getRandomColor(){
             var letters = "0123456789ABCDEF";
             var color = "#";
@@ -36,7 +36,25 @@ function getRandomColor(){
 
         divs.forEach((div) => (div.style.backgroundColor = "purple"));
         btn.addEventListener("click",changeColorButton);
-        
+        */
+        const getRandomColor = function () {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+
+      function changeColors() {
+        divs.forEach((div) => (div.style.backgroundColor = getRandomColor()));
+      }
+
+      const divs = document.querySelectorAll("#div-container div");
+      const btn = document.getElementById("btn");
+
+      divs.forEach((div) => (div.style.backgroundColor = "pink"));
+      btn.addEventListener("click", changeColors);
     </script>
 </body>
 </html>
