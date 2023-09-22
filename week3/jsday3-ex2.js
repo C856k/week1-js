@@ -1,17 +1,50 @@
-const COUNTRY_API = "https://countries.plaul.dk/api/countries"
+document.addEventListener("DOMContentLoaded",function() {
+    const map = document.getElementById(map);
+    const infoDiv = document.getElementById("info");
+    let currentChosen = null;
 
-document.getElementById("svg2").addEventListener("click",mapHandler)
+    map.addEventListener("click",() => {
+        changeColor();
+        displayInfo
+    });
 
+    function changeColor() {
+        if (currentChosen != null) {
+            currentChosen.style.fill = "rgb(220, 220, 220)";
+        }
+        Event.target.style.fill = "rgb(0, 7, 220)";
+        currentChosen = Event.target;
+    }
 
-function mapHandler(evt){
-    const elementPressed = evt.target
-    const id = elementPressed.id
-    console.log(id)
+    function displayInfo() {
+        fetch(`https://countries.plaul.dk/api/countries/${Event.target.id}`)
+        .then((res) => res.json())
+        .then((data) => buildHtml(data));
+    }
 
-    elementPressed.style.fill="blue"
-    fetch(COUNTRY_API+"/"+id)
-    .then(res=>res.json())
-    .then(data=>{
+    function buildHtml(data) {
+        console.log(data);
+        const flagImg = document.createElement("img");
+        flagImg.src = data.flag;
+
+        let infoHTML = `
+        <div>
+        <p>${flagImg.outerHTML}</p>
+        <p>Country: ${data.name.common}</p>
+        <p>Member of UN: ${data.UNmember}</p>
+        <p>${formatCurrentcies(data.currencies)}</p>
+        <p>Capital: ${data.capital}</p>
+        <p>Borders: ${data.borders.join(", ")}</p>
+        </div>`;
         
-    })
-}
+        infoDiv.innerHTML = infoHTML;
+    }
+
+    function formatCurrentcies(currencies) {
+        const currencyEntries = Object.entries(currencies);
+        const formatCurrentcies = currencyEntries.map(([code, currentcy]) => {
+            return `${code}, name: ${currentcy.name}, symbol: ${currentcy.symbol}`;
+        });
+        return `Currencies: ${formatCurrentcies.join("; ")}`;
+    }
+    });
