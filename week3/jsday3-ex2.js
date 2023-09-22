@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded",function() {
         if (currentChosen != null) {
             currentChosen.style.fill = "rgb(220, 220, 220)";
         }
-        Event.target.style.fill = "rgb(0, 7, 220)";
-        currentChosen = Event.target;
+        event.target.style.fill = "rgb(0, 7, 220)";
+        currentChosen = event.target;
     }
 
     function displayInfo() {
-        fetch(`https://countries.plaul.dk/api/countries/${Event.target.id}`)
+        fetch(`https://countries.plaul.dk/api/countries/${event.target.id}`)
         .then((res) => res.json())
         .then((data) => buildHtml(data));
     }
